@@ -1,0 +1,1 @@
+rootProject.name = "free-my-memory-studio"
