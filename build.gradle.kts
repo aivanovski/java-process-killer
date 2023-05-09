@@ -13,7 +13,7 @@ plugins {
 
 val appVersion = "0.1.0"
 
-group = "com.github.ai.fmstudio"
+group = "com.github.ai.jpk"
 version = appVersion
 
 repositories {
@@ -42,7 +42,7 @@ tasks.jacocoTestReport {
     classDirectories.setFrom(
         classDirectories.files.map {
             fileTree(it).matching {
-                exclude("com/github/ai/fmstudio/di/**")
+                exclude("com/github/ai/jpk/di/**")
             }
         }
     )
@@ -77,7 +77,7 @@ tasks {
         archiveBaseName.set("fms")
         mergeServiceFiles()
         manifest {
-            attributes(mapOf("Main-Class" to "com.github.ai.fmstudio.MainKt"))
+            attributes(mapOf("Main-Class" to "com.github.ai.jpk.MainKt"))
         }
     }
 }

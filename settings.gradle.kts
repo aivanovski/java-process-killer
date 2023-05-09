@@ -1,1 +1,1 @@
-rootProject.name = "free-my-memory-studio"
+rootProject.name = "java-process-killer"
