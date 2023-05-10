@@ -111,7 +111,7 @@ jobs:
           path: jpkiller-${{env.VERSION}}
 
   create-coverage-badge:
-    needs: [ create-deb-package ]
+    needs: [ build-native-images ]
     name: 'Create coverage badge'
     runs-on: ubuntu-latest
     steps:
