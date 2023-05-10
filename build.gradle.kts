@@ -13,7 +13,7 @@ plugins {
 
 val appVersion = "0.1.0"
 
-group = "com.github.ai.jpk"
+group = "com.github.ai.jpkiller"
 version = appVersion
 
 repositories {
@@ -74,10 +74,10 @@ tasks.register("createPropertyFileWithVersion") {
 
 tasks {
     named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("fms")
+        archiveBaseName.set("jpkiller")
         mergeServiceFiles()
         manifest {
-            attributes(mapOf("Main-Class" to "com.github.ai.jpk.MainKt"))
+            attributes(mapOf("Main-Class" to "com.github.ai.jpkiller.MainKt"))
         }
     }
 }
