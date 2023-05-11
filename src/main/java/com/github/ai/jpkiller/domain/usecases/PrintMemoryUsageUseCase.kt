@@ -38,7 +38,7 @@ class PrintMemoryUsageUseCase {
                     String.format(
                         "    %s: %s",
                         process.type.getTitle(),
-                        process.usedMemory.format(),
+                        process.usedMemory.format()
                     )
                 )
             }

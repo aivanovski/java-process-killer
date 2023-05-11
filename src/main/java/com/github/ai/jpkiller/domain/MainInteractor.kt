@@ -9,7 +9,7 @@ class MainInteractor(
     private val getDataUseCase: GetDataUseCase,
     private val printMemoryUsageUseCase: PrintMemoryUsageUseCase,
     private val askToKillUseCase: AskToKillUseCase,
-    private val killProcessUseCase: KillProcessUseCase,
+    private val killProcessUseCase: KillProcessUseCase
 ) {
 
     fun start() {
