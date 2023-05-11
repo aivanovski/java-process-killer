@@ -7,8 +7,10 @@ import com.github.ai.jpkiller.data.parser.top.TopOutputParserProvider
 import com.github.ai.jpkiller.domain.MainInteractor
 import com.github.ai.jpkiller.domain.ProcessClassifier
 import com.github.ai.jpkiller.domain.ProcessExecutor
+import com.github.ai.jpkiller.domain.ProcessGroupClassifier
 import com.github.ai.jpkiller.domain.SystemPropertyProvider
 import com.github.ai.jpkiller.domain.usecases.AskToKillUseCase
+import com.github.ai.jpkiller.domain.usecases.GetDataUseCase
 import com.github.ai.jpkiller.domain.usecases.GetOsTypeUseCase
 import com.github.ai.jpkiller.domain.usecases.GetProcessesUseCase
 import com.github.ai.jpkiller.domain.usecases.GetUsedMemoryUseCase
@@ -20,10 +22,11 @@ object KoinModule {
 
     val appModule = module {
         single { ProcessExecutor() }
-        single { ProcessClassifier() }
         single { SystemPropertyProvider() }
         single { ByteCountParserProvider() }
         single { TopOutputParserProvider(get()) }
+        single { ProcessClassifier() }
+        single { ProcessGroupClassifier() }
         single<PsOutputParser> { DefaultPsOutputParser() }
 
         // Use-Cases
@@ -31,10 +34,11 @@ object KoinModule {
         single { GetProcessesUseCase(get(), get()) }
         single { GetUsedMemoryUseCase(get(), get()) }
         single { PrintMemoryUsageUseCase() }
-        single { AskToKillUseCase(get()) }
+        single { AskToKillUseCase() }
         single { KillProcessUseCase(get()) }
+        single { GetDataUseCase(get(), get(), get(), get(), get()) }
 
         // Interactors
-        single { MainInteractor(get(), get(), get(), get(), get(), get(), get()) }
+        single { MainInteractor(get(), get(), get(), get()) }
     }
 }

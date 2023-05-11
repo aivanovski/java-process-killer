@@ -1,14 +1,11 @@
 package com.github.ai.jpkiller.domain.usecases
 
-import com.github.ai.jpkiller.domain.ProcessExecutor
 import com.github.ai.jpkiller.entity.Either
 import com.github.ai.jpkiller.entity.ProcessGroup
 import com.github.ai.jpkiller.entity.ProcessType
 import java.util.Scanner
 
-class AskToKillUseCase(
-    private val processExecutor: ProcessExecutor
-) {
+class AskToKillUseCase {
 
     fun getPidsToKill(groups: List<ProcessGroup>): Either<List<Int>> {
         println("")

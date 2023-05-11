@@ -17,7 +17,7 @@ class MacOsByteCountParser : ByteCountParser {
 
                 return if (cleaned.isNumber()) {
                     ByteCount.Number(
-                        value = bytes.toLong() * unit.factor
+                        value = cleaned.toLong() * unit.factor
                     )
                 } else {
                     null
