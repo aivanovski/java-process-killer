@@ -1,20 +1,24 @@
 package com.github.ai.jpkiller.domain.usecases
 
+import com.github.ai.jpkiller.domain.output.OutputPrinter
 import com.github.ai.jpkiller.entity.ProcessGroup
 import com.github.ai.jpkiller.entity.ProcessGroupType
 import com.github.ai.jpkiller.entity.ProcessType
 
 class PrintMemoryUsageUseCase {
 
-    fun printMemoryUsage(groups: List<ProcessGroup>) {
+    fun printMemoryUsage(
+        groups: List<ProcessGroup>,
+        printer: OutputPrinter
+    ) {
         val ideGroups = groups.filter { group -> group.type == ProcessGroupType.IDE }
         val otherGroups = groups.filter { group -> group.type != ProcessGroupType.IDE }
 
         if (otherGroups.isNotEmpty()) {
-            println("Used Memory:")
+            printer.println("Used Memory:")
 
             for (group in otherGroups) {
-                println(
+                printer.println(
                     String.format(
                         "    %s: %s in %s process(es)",
                         group.type.getTitle(),
@@ -26,15 +30,15 @@ class PrintMemoryUsageUseCase {
         }
 
         if (otherGroups.isNotEmpty() && ideGroups.isNotEmpty()) {
-            println("")
+            printer.println("")
         }
 
         if (ideGroups.isNotEmpty()) {
-            println("Used Memory by IDE:")
+            printer.println("Used Memory by IDE:")
 
             val processes = ideGroups.flatMap { group -> group.processes }
             for (process in processes) {
-                println(
+                printer.println(
                     String.format(
                         "    %s: %s",
                         process.type.getTitle(),

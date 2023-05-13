@@ -12,5 +12,5 @@ fun main(args: Array<String>) {
 
     val interactor: MainInteractor = get()
 
-    interactor.start()
+    interactor.start(args)
 }
